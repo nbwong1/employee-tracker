@@ -1,10 +1,11 @@
 const inquirer = require('inquirer');
+const { stringify } = require('nodemon/lib/utils');
 
-// console.log(',------------------.');
-// console.log('|                  |');
-// console.log('| Employee Tracker |');
-// console.log('|                  |');
-// console.log("`------------------'");
+console.log(',------------------.');
+console.log('|                  |');
+console.log('| Employee Tracker |');
+console.log('|                  |');
+console.log("`------------------'");
 
 inquirer
     .prompt([
@@ -16,7 +17,8 @@ inquirer
         }
     ])
     .then(answers => {
-        const { choices } = answers;        console.info('Answer:', answers.mainMenuLov);
+        const { choices } = answers;        
+        console.info('Answer:', answers.mainMenuLov);
 
         if (choices === 'View All Departments') {
             showDepartments();
@@ -45,5 +47,15 @@ inquirer
         if (choices === 'Update an Employee') {
             updateEmployee();
         }
-      });
 
+// function for addDepartment
+addDepartment = () => {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'deptName',
+                message: 'What is the new department name?'
+            }
+        ]);
+};
